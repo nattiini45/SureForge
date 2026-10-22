@@ -34,7 +34,8 @@ the workflow is expressed for the MiniMax Code runtime and for the PawCommit Stu
   and the security-swarm base-2 gate. These parameters are authoritative for the studio team and
   override this document's defaults.
 - The question-tool paragraph now names `ask_user` and its real limits, and carries the
-  MiniMax Bot session-wedge hazard plus its repair (`mavis session delete`).
+  MiniMax Bot session hazard with what was observed, what the plugin source supports, what remains
+  unproven, and the replacement-session repair via the `mavis` native tool.
 - The Plan phase now notes the concurrency cap; the Deliver phase points at the result artifact.
 - Frontmatter `metadata` gained `upstream` and `port`; `version` became `1.0.0-mmx.1`.
 
@@ -42,8 +43,9 @@ the workflow is expressed for the MiniMax Code runtime and for the PawCommit Stu
 
 - The question tool is named (`ask_user`, 1–4 steps, 2–4 options each), with the recommendation
   and free-text rules.
-- Added the MiniMax Bot session-wedge hazard, the "answer through the card's option buttons" rule,
-  and the `mavis session delete` repair.
+- Added the MiniMax Bot session hazard, the "answer through the card's option buttons" rule,
+  and the replacement-session repair via the `mavis` native tool
+  (`mavis({ command: "session delete", args: { session_id: "<sessionId>" } })`).
 - The research-tool paragraph now names `grep`, `glob`, and `web_search`.
 
 ### `references/plan.md`
@@ -85,10 +87,12 @@ the workflow is expressed for the MiniMax Code runtime and for the PawCommit Stu
 
 - **Rewritten.** The upstream matrix (Devin CLI, Claude Code, Codex, Cursor, Hermes) is replaced by
   a MiniMax Code matrix: skill discovery paths, the Windows PowerShell 5.1 shell, `task` delegation
-  and the concurrency limit, the `ask_user` schema, the `mavis` tool, the MiniMax Bot plugin, and
+  and the concurrency limit, the `ask_user` schema (including the Goal-mode auto-adopt caveat),
+  the `mavis` **native tool** (there is no `mavis` CLI on this host), the MiniMax Bot plugin, and
   GitHub (`gh`) / Gitea (MCP) repository access. The upstream matrix remains valid for its own
   hosts.
-- The bot-session wedge hazard is documented with its cause, its discriminator, and its repair.
+- The bot-session hazard is documented with what was observed, what the plugin source
+  actually supports, and what remains unproven, plus the replacement-session repair.
 
 ### `assets/task-ledger.md`
 
@@ -105,7 +109,11 @@ the workflow is expressed for the MiniMax Code runtime and for the PawCommit Stu
 
 - Unchanged apart from surrounding attribution.
 
-### Unchanged, byte-for-byte
+### Unchanged in content (byte-identical after CRLF→LF normalisation)
 
-- `LICENSE` (upstream MIT text, verbatim)
-- `assets/coverage-ledger.csv` (the header row is unchanged)
+- `LICENSE` (upstream MIT text, verbatim; the committed git blob is identical to upstream's)
+- `assets/coverage-ledger.csv` (the header row is unchanged; the committed git blob is identical
+  to upstream's)
+
+The installed copies under `~/.minimax/skills/sureforge/` use LF endings, so they differ from a
+CRLF upstream worktree in line endings only.

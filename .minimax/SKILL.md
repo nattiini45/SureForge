@@ -136,12 +136,15 @@ identified recommendation, and a free-text option. A skipped, declined, or timed
 a decision. Revisit only blocking uncertainty; do not interrogate the user about facts already
 available.
 
-> **Never end a bot turn on an unanswered `ask_user`.** In the MiniMax Bot plugin a turn that ends
-> in a question can wedge the bot's session permanently — the question card may never be written
-> into the chat, and every later turn then fails with `AGENT_UNAVAILABLE`. Ask from a session where
-> the card is confirmed to render, keep the turn alive until it is answered, and if a session is
-> already wedged, repair it with `mavis session delete <session id>` (archiving does not work).
-> See [platform notes](references/platforms.md).
+> **Do not end a bot turn on an unanswered `ask_user`.** The MiniMax Bot plugin writes the
+> question card only when the Host reports `pendingQuestion`, so a turn that ends in a question
+> can leave the user with no way to answer it and the bot failing later turns with
+> `AGENT_UNAVAILABLE` (observed 2026-10-22; the trigger was not isolated — see
+> [platform notes](references/platforms.md)). Ask from a session where the card is confirmed to
+> render, and keep the turn alive until it is answered. If a bot stops accepting turns, replace
+> its session with the `mavis` tool —
+> `mavis({ command: "session delete", args: { session_id: "<sessionId>" } })`. There is no `mavis`
+> CLI on this host to shell out to.
 
 Present better, faster, or cheaper paths where meaningful, including retaining the current
 approach. Do not silently adopt an alternative. Produce **an understanding memo and a decision

@@ -74,11 +74,14 @@ an answer determines whether hosting is needed. Offer practical options, explain
 the recommended option, and let the user type a custom answer. Do not pretend a recommendation is
 selected.
 
-> **Bot-session hazard.** Do not end a MiniMax Bot turn on an unanswered `ask_user`. If the
-> question card is not written into the chat, that session wedges permanently: every later turn
-> fails with `AGENT_UNAVAILABLE` and queued messages pile up undelivered. The repair is
-> `mavis session delete <session id>` — archiving does **not** work, because the runtime still
-> resolves an archived session. Answer bots through the card's option buttons, not free text.
+> **Bot-session hazard.** Do not end a MiniMax Bot turn on an unanswered `ask_user`. The
+> plugin writes the question card only when the Host reports `pendingQuestion`, so a turn that
+> ends in a question can leave the user with no way to answer it and the bot failing later turns
+> with `AGENT_UNAVAILABLE` (observed 2026-10-22; the trigger was not isolated). Answer bots
+> through the card's option buttons, not free text. If a bot stops accepting turns, replace its
+> session with the `mavis` tool:
+> `mavis({ command: "session delete", args: { session_id: "<sessionId>" } })`. There is no
+> `mavis` CLI on this host.
 
 If no question tool exists, use numbered text questions with two to four options, mark the
 recommended option, and allow free text. If the user skips, declines, or times out:
