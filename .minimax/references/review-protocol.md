@@ -25,7 +25,7 @@ to create apparent independence.
 - The `verifier` role contract forbids changing project files and creating further agents, but the
   child still has shell access. **That is a role contract, not a sandbox.** Say so in the report.
 - Use `task_append` only to continue a review, never to steer it toward a verdict.
-- Do not hand the reviewer the owner's session (`mavis session messages`) — that would restore the
+- Do not hand the reviewer the owner's session (`mavis({ command: "session messages" })`) — that would restore the
   contaminated context this protocol exists to avoid.
 - If the reviewer must not reach the network, the host offers no network kill-switch per child:
   grant a narrow data scope and disclose it instead of claiming isolation you do not have.

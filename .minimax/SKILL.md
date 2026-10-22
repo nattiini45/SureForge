@@ -31,7 +31,7 @@ the live schema when in doubt (see [platform notes](references/platforms.md)).
 | Broad read-only mapping | `task` with `agent_name: "explore"` |
 | Inspect / create / change files | `read`, `write`, `edit`, `grep`, `glob` |
 | Run commands and checks | `bash` (Windows: PowerShell 5.1 — no `&&`, no `||`, no ternary) |
-| Inspect agents, sessions, MCP servers | `mavis` (`agent list`, `session list`, `mcp list`) |
+| Inspect agents, sessions, MCP servers | `mavis` native tool (`{ command: "agent list" }`, `"session list"`, `"mcp list"`) |
 | Load another skill | `skill` |
 | Reach another team bot | MiniMax Bot plugin tools (`message_bot`, `dispatch_tasks`, `get_tasks`) |
 

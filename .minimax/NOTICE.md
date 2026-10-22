@@ -107,7 +107,7 @@ the workflow is expressed for the MiniMax Code runtime and for the PawCommit Stu
 
 ### `assets/critic-brief.md`
 
-- Unchanged apart from surrounding attribution.
+- Wording unchanged; re-wrapped to hard-wrapped lines.
 
 ### Unchanged in content (byte-identical after CRLF→LF normalisation)
 

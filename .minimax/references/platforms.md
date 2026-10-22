@@ -3,7 +3,7 @@
 Local host schema and tool behavior rechecked: **2026-10-22**. These notes are capability guidance,
 not a claim that SureForge has been behaviorally tested on every host. Tool names, context
 inheritance, discovery paths, and permission controls can change. **Inspect the current host schema
-before use** — `mavis agent list`, `mavis mcp list`, and the tool schemas in the session.
+before use** — `mavis({ command: "agent list" })`, `mavis({ command: "mcp list" })`, and the tool schemas in the session.
 
 ## Portable core
 
@@ -43,8 +43,8 @@ Use the actual tool exposed by the host, not a guessed function call. On this ru
 
 The plugin writes the question card only when the Host reports `pendingQuestion`
 (`engine.mjs`). If a bot turn ends on `ask_user` and no card reaches the chat, the user has no
-way to answer, and the bot can stop accepting turns: one observed run produced 12 consecutive
-`AGENT_UNAVAILABLE` failures in a single session, with no successful turn in between, until the
+way to answer, and the bot can stop accepting turns: one observed run produced 13 consecutive
+`AGENT_UNAVAILABLE` failures with no successful turn in between, until the
 session was replaced.
 
 What is **not** established: the missing card was not proven to be the cause. The plugin treats
